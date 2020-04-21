@@ -26,6 +26,17 @@ public class MyMessageSender {
         Queue1Dto object = create1Dto();
         log.info("Sending message [{}]", object);
 
+        /*
+        Setting JmsTemplate as "transacted" will use a short local JMS transaction when running
+        outside of a managed transaction, and a synchronized local JMS transaction in case of a
+        managed transaction (other than an XA transaction) being present. This has the effect of
+        a local JMS transaction being managed alongside the main transaction (which might be a
+        native JDBC transaction), with the JMS transaction committing right after the main
+        transaction.
+
+        hmoJmsTemplate.setSessionTransacted(true);
+         */
+
         hmoJmsTemplate.convertAndSend(object);
     }
 
