@@ -7,7 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class HmoJmsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HmoJmsApplication.class, args);
+		try {
+			SpringApplication.run(HmoJmsApplication.class, args);
+		} catch (Throwable t) {
+			new Exception(t).printStackTrace();
+		}
 	}
 
 }
